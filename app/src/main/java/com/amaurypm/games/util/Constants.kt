@@ -8,9 +8,9 @@ import retrofit2.converter.gson.GsonConverterFactory
  */
 
 object Constants {
-    //const val BASE_URL = "https://www.serverbpw.com/" //Debe terminar en /
+    const val BASE_URL = "https://www.serverbpw.com/" //Debe terminar en /
     //const val BASE_URL = "http://10.0.2.2:8888/" //Localhost en el emulador
-    const val BASE_URL = "https://private-a649a-games28.apiary-mock.com/"
+    //const val BASE_URL = "https://private-a649a-games28.apiary-mock.com/"
 
 
     const val LOGTAG = "LOGS"

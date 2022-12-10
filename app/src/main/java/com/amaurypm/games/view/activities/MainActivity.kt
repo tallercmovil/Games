@@ -1,5 +1,6 @@
 package com.amaurypm.games.view.activities
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
@@ -32,7 +33,8 @@ class MainActivity : AppCompatActivity() {
 
 
         CoroutineScope(Dispatchers.IO).launch{
-            val call = Constants.getRetrofit().create(GamesApi::class.java).getGamesApiary("games/games_list")
+            //val call = Constants.getRetrofit().create(GamesApi::class.java).getGamesApiary("games/games_list")
+            val call = Constants.getRetrofit().create(GamesApi::class.java).getGames("cm/games/games_list.php")
 
             call.enqueue(object: Callback<ArrayList<Game>>{
                 override fun onResponse(
@@ -64,5 +66,16 @@ class MainActivity : AppCompatActivity() {
 
     fun selectedGame(game: Game) {
         //Aquí programamos el click de cada elemento del recycler view
+        val parametros = Bundle()
+
+        parametros.apply{
+            putString("id", game.id)
+        }
+
+        val intent = Intent(this@MainActivity, Details::class.java)
+
+        intent.putExtras(parametros)
+
+        startActivity(intent)
     }
 }
